@@ -160,6 +160,8 @@ def printDegree(l):
 	return max(deg)
 
 def resolveFirst(l):
+	s = 0
+	f = 0
 	for i in range(len(l)):
 		if (i % 2 == 1):
 			if l[i] == 1:
@@ -167,7 +169,10 @@ def resolveFirst(l):
 			if l[i] == 0:
 				f = l[i - 1]
 	if s == 0:
-		return 0
+		print("The solution is:\nEach value between +inf and -inf")
+		exit()
+	if not f/s :
+		return f / s
 	return f / s * -1
 
 def resolveSecond(l):
@@ -212,8 +217,8 @@ def printSolution(l):
 		print("The solution is:\n0")
 		exit()
 	if deg == 1:
-		print("The solution is:")
-		print(resolveFirst(l))
+		# print("The solution is:")
+		print("The solution is:\n%s" % resolveFirst(l))
 		exit()
 	if (deg == 2):
 		resolveSecond(l)
