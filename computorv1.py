@@ -120,6 +120,15 @@ def simplifyList(l):
 					l.pop(ll)
 					l.pop(ll - 1)
 				ll+=1
+	i = -1
+	while i < (len(l) - 1):
+		i+=1
+		if (l[i] == 0 and not i % 2):
+			i += 1
+			if (i < len(l) and l[i] != 0):
+				l.pop(i)
+				l.pop(i - 1)
+
 	return l
 
 
@@ -132,6 +141,9 @@ def parseArg(s):
 
 def printReduced(l):
 	j = -1
+	if (len(l) == 0):
+		print("Error\nInvalid equation")
+		exit()
 	print("Reduced form: ", end='')
 	for i in l:
 		j += 1
@@ -157,6 +169,9 @@ def printDegree(l):
 	if max(deg) == 0 and b2o == True:
 		print("The polynomial degree is strictly equal to 0 and no solution are found, so each real number is a solution...")
 		exit()
+	if max(deg) == 0 and b2o == False:
+		print("No solution were found")
+		exit()
 	return max(deg)
 
 def resolveFirst(l):
@@ -175,6 +190,14 @@ def resolveFirst(l):
 		return f / s
 	return f / s * -1
 
+def resolveComplex(a, b, c, delta):
+	if a == 0:
+		print("Each value between +inf and -inf")
+	alpha = (b * -1) / (2 * a)
+	beta = (abs(delta) ** (0.5)) / (2 * a)
+	print(alpha, "+", beta, "* i")
+	print(alpha, "-", beta, "* i")
+
 def resolveSecond(l):
 	b = 0
 	a = 0
@@ -189,7 +212,8 @@ def resolveSecond(l):
 				a = l[i - 1]
 	delta = (b*b) - (4 * (a * c))
 	if delta < 0:
-		print("Discriminant is strictly negative, I can't solve.")
+		print("Discriminant is strictly negative, here are the complex solutions:")
+		resolveComplex(a, b, c, delta)
 		exit()
 	if delta == 0:
 		if (a == 0):
@@ -213,11 +237,7 @@ def printSolution(l):
 	if deg > 2:
 		print("The polynomial degree is strictly greater than 2, I can't solve.")
 		exit()
-	if deg == 0:
-		print("The solution is:\n0")
-		exit()
 	if deg == 1:
-		# print("The solution is:")
 		print("The solution is:\n%s" % resolveFirst(l))
 		exit()
 	if (deg == 2):
