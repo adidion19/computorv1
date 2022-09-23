@@ -188,13 +188,13 @@ def resolveSecond(l):
 		exit()
 	if delta == 0:
 		if (a == 0):
-			print("Discriminant is strictly equal to zero, the solution is:\n0")
+			print("Discriminant is strictly equal to zero, the solution is:\nEach value between +inf and -inf")
 			exit()
 		print("Discriminant is strictly equal to zero, the solution is:", "\n{0:.6f}".format((-1 * (b / ( 2 * a)))))
 		exit()
 	if delta > 0:
 		if (a == 0):
-			print("Discriminant is strictly positive, the solution is:\n0")
+			print("Discriminant is strictly positive, the solution is:\nEach value between +inf and -inf")
 			exit()
 		print("Discriminant is strictly positive, the two solutions are:")
 		print("{0:.6f}".format(((b * -1) - (delta ** 0.5)) / (2 * a)))
