@@ -166,9 +166,14 @@ def resolveFirst(l):
 				s = l[i - 1]
 			if l[i] == 0:
 				f = l[i - 1]
+	if s == 0:
+		return 0
 	return f / s * -1
 
 def resolveSecond(l):
+	b = 0
+	a = 0
+	c = 0
 	for i in range(len(l)):
 		if (i % 2 == 1):
 			if l[i] == 1:
@@ -182,9 +187,15 @@ def resolveSecond(l):
 		print("Discriminant is strictly negative, I can't solve.")
 		exit()
 	if delta == 0:
+		if (a == 0):
+			print("Discriminant is strictly equal to zero, the solution is:\n0")
+			exit()
 		print("Discriminant is strictly equal to zero, the solution is:", "\n{0:.6f}".format((-1 * (b / ( 2 * a)))))
 		exit()
 	if delta > 0:
+		if (a == 0):
+			print("Discriminant is strictly positive, the solution is:\n0")
+			exit()
 		print("Discriminant is strictly positive, the two solutions are:")
 		print("{0:.6f}".format(((b * -1) - (delta ** 0.5)) / (2 * a)))
 		print("{0:.6f}".format(((b * -1) + (delta ** 0.5)) / (2 * a)))
