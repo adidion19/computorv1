@@ -210,7 +210,7 @@ def printSolution(l):
 
 def main():
 	if len(sys.argv) != 2:
-		print("Error\nUsage: python3 computorv1.py <equation to solve>", file=sys.stderr)
+		print("Error\nUsage: python3 computerv1.py <equation to solve>", file=sys.stderr)
 		exit()
 	ex  = sys.argv[1]
 	l = parseArg(ex)
